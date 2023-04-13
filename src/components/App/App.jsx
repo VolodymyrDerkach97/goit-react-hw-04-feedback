@@ -17,15 +17,21 @@ export class App extends Component {
     }));
   };
 
-  render() {
+  totalStatistic = () =>
+    Object.values(this.state).reduce((acc, item) => acc + item, 0);
+
+  positivePercentageStatistics = () => {
     const { good, neutral, bad } = this.state;
-    const total = Object.values(this.state).reduce(
-      (acc, item) => acc + item,
-      0
-    );
-    const positivePercentage = Math.round((good / total) * 100)
+    const total = this.totalStatistic();
+    return Math.round((good / total) * 100)
       ? Math.round((good / total) * 100)
       : 0;
+  };
+
+  render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.totalStatistic();
+    const positivePercentage = this.positivePercentageStatistics();
 
     return (
       <>
