@@ -21,7 +21,7 @@ export class App extends Component {
     Object.values(this.state).reduce((acc, item) => acc + item, 0);
 
   positivePercentageStatistics = () => {
-    const { good, neutral, bad } = this.state;
+    const { good } = this.state;
     const total = this.totalStatistic();
     return Math.round((good / total) * 100)
       ? Math.round((good / total) * 100)
