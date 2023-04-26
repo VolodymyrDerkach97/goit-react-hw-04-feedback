@@ -6,10 +6,10 @@ const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   const firstLetterToUppercase = str => {
     return str[0].toUpperCase() + str.slice(1);
   };
-  const feedbackButtonsNameArr = Object.keys(options);
+
   return (
     <>
-      {feedbackButtonsNameArr.map(name => (
+      {options.map(name => (
         <button
           className={clsx(css.button, {
             [css.good]: name === 'good',
@@ -31,9 +31,5 @@ export default FeedbackOptions;
 
 FeedbackOptions.propTypes = {
   onLeaveFeedback: PropTypes.func.isRequired,
-  options: PropTypes.exact({
-    good: PropTypes.number.isRequired,
-    neutral: PropTypes.number.isRequired,
-    bad: PropTypes.number.isRequired,
-  }),
+  options: PropTypes.array,
 };
